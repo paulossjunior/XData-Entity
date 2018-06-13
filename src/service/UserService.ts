@@ -4,23 +4,19 @@ import {UserRepository} from "../repository/UserRepository";
 
 export class UserService{
     
-    userRepository: UserRepository;
+    private userRepository: UserRepository = getCustomRepository(UserRepository);
     
-    constructor(){
-        this.userRepository = getCustomRepository(UserRepository);
-    }
-
-    create (){
-        const user = this.userRepository.create();
+    public create (){
+        let user = this.userRepository.create();
         user.createDate = new Date();
         return user;
     }
     
-    async save(user:User){
+    public async save(user:User){
         await this.userRepository.save(user); 
     }
 
-    async findAll(){
+    public async findAll(){
         return await this.userRepository.find();
     }
 

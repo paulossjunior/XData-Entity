@@ -1,6 +1,5 @@
 import "reflect-metadata";
 import {createConnection} from "typeorm";
-import {User} from "./model/User";
 import { UserService } from "./service/UserService";
 
 createConnection().then(async connection => {
